@@ -1,0 +1,46 @@
+{
+  "name": "use-protobuf",
+  "version": "0.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "module": "lib/index.mjs",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c",
+    "tsc": "tsc -p . --noEmit",
+    "tsc:d": "tsc -p . --outDir lib -d --emitDeclarationOnly",
+    "prepublishOnly": "rimraf lib && npm run build && npm run tsc:d"
+  },
+  "devDependencies": {
+    "@babel/core": "7.16.0",
+    "@rollup/plugin-typescript": "8.3.0",
+    "@types/react": "17.0.36",
+    "@types/react-dom": "17.0.11",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "rimraf": "3.0.2",
+    "rollup": "2.60.1",
+    "typescript": "4.5.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inokawa/use-protobuf.git"
+  },
+  "keywords": [
+    "react",
+    "hooks",
+    "protobuf",
+    "grpc",
+    "grpc-web"
+  ],
+  "author": "inokawa <stratoooo-taster@yahoo.co.jp> (https://github.com/inokawa/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/inokawa/use-protobuf/issues"
+  },
+  "homepage": "https://github.com/inokawa/use-protobuf#readme"
+}
