@@ -1,6 +1,6 @@
 # react-grpc-web
 
-![npm](https://img.shields.io/npm/v/react-grpc-web)
+![npm](https://img.shields.io/npm/v/react-grpc-web) [![check](https://github.com/inokawa/react-grpc-web/actions/workflows/check.yml/badge.svg)](https://github.com/inokawa/react-grpc-web/actions/workflows/check.yml)
 
 Typed [React](https://github.com/facebook/react) hooks for [gRPC-web](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-WEB.md).
 
