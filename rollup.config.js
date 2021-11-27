@@ -2,7 +2,7 @@ import typescript from "@rollup/plugin-typescript";
 import pkg from "./package.json";
 
 export default {
-  input: "src/index.tsx",
+  input: "src/index.ts",
   output: [
     {
       file: pkg.main,
@@ -13,6 +13,6 @@ export default {
       format: "es",
     },
   ],
-  external: Object.keys(pkg.dependencies),
+  // external: Object.keys(pkg.dependencies),
   plugins: [typescript()],
 };

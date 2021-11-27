@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import * as grpcWeb from "grpc-web";
+import type * as grpcWeb from "grpc-web";
 
 type AsObject<T> = T extends { toObject: (...args: any[]) => infer R }
   ? { [key in keyof R]: R[key] }
