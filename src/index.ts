@@ -28,10 +28,9 @@ export const useUnaryRPC = <
 ) => {
   type CB = Parameters<T>[2];
   type CBData = Parameters<CB>[1];
-  type CBError = Parameters<CB>[0];
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<AsObject<CBData> | null>(null);
-  const [error, setError] = useState<CBError | null>(null);
+  const [error, setError] = useState<grpcWeb.RpcError | null>(null);
 
   useEffect(() => {
     const request = new Request();
@@ -62,4 +61,46 @@ export const useUnaryRPC = <
 
 // export const useUnaryRPCLazy = () => {};
 
-// export const useServerStreamingRPC = ()=> {};
+export const useServerStreamingRPC = <
+  T extends (
+    ...args: [any, grpcWeb.Metadata | null]
+  ) => grpcWeb.ClientReadableStream<any>,
+  REQ extends Constructable
+>(
+  call: T,
+  Request: REQ,
+  { variables, meta }: { variables: AsObject<REQ>; meta?: grpcWeb.Metadata }
+) => {
+  type CBData = ReturnType<T>;
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState<AsObject<CBData>[] | null>(null);
+  const [error, setError] = useState<grpcWeb.RpcError | null>(null);
+
+  useEffect(() => {
+    const request = new Request();
+    try {
+      Object.keys(variables).forEach((k) => {
+        const v = (variables as any)[k];
+        request[toSetterName(k)](v);
+      });
+    } catch (e) {
+      console.log(e);
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+    const stream = call(request, meta || null);
+    stream.on("data", (resp) => {
+      setData((prev) => [...(prev || []), resp.toObject()]);
+    });
+    stream.on("status", (status) => {
+      // TODO
+    });
+    stream.on("end", () => {
+      setLoading(false);
+    });
+  }, Object.values(variables));
+
+  return { loading, data, error };
+};
