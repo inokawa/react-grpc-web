@@ -1,5 +1,5 @@
 {
-  "name": "use-protobuf",
+  "name": "react-grpc-web",
   "version": "0.0.0",
   "description": "",
   "main": "lib/index.js",
@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/inokawa/use-protobuf.git"
+    "url": "git+https://github.com/inokawa/react-grpc-web.git"
   },
   "keywords": [
     "react",
@@ -40,7 +40,7 @@
   "author": "inokawa <stratoooo-taster@yahoo.co.jp> (https://github.com/inokawa/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/inokawa/use-protobuf/issues"
+    "url": "https://github.com/inokawa/react-grpc-web/issues"
   },
-  "homepage": "https://github.com/inokawa/use-protobuf#readme"
+  "homepage": "https://github.com/inokawa/react-grpc-web#readme"
 }
